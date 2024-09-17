@@ -92,8 +92,10 @@ def get_access_token(query_id):
     return response.json()['access_token']
 
 def get_username(query_id:str):
-    return json.loads(unquote(query_id).split('&')[1].split('=')[1])['username']
-
+    data = json.loads(unquote(query_id).split('&')[1].split('=')[1])
+    if 'username' in data:
+        return data['username']
+    return '<NOT SET>'
 def config(name, default):
     with open("config.json", 'r') as file:
         config = json.load(file)
