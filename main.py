@@ -55,7 +55,7 @@ class TONxDAO_Miner:
     async def start_async_mining(self, account_index):
         uri = 'wss://ws.production.tonxdao.app/ws'
         async with websockets.connect(uri) as websocket:
-            print("connected")
+            # print("connected")
             while True:
                 await websocket.send(self.auth_message(account_index))
 
@@ -86,7 +86,7 @@ class TONxDAO_Miner:
             except KeyboardInterrupt:
                 break
             except Exception as E:
-                print(E)
+                # print(E)
                 pass
     
     def start_mining(self):

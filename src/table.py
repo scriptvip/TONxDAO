@@ -26,7 +26,7 @@ class LiveTable:
         table.add_column("Energy", style="green", justify='center', width=7)
 
         for i in range(len(self.TONxDAO_Miner.tokens)):
-            table.add_row(str(i+1), str(self.TONxDAO_Miner.info[i]['name']), str(self.TONxDAO_Miner.info[i]['coins']), str(self.TONxDAO_Miner.info[i]['energy']))
+            table.add_row(str(i+1), str(self.TONxDAO_Miner.info[i]['name']),str(self.TONxDAO_Miner.info[i]['profit']), str(self.TONxDAO_Miner.info[i]['coins']), str(self.TONxDAO_Miner.info[i]['energy']))
         return table
 
     def Loop(self):
