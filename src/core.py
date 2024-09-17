@@ -1,5 +1,5 @@
 import requests, json, os
-from urllib.parse import unquote
+from urllib.parse import unquote, parse_qs
 
 def get_user_dao(query_id):
     token = get_access_token(query_id)
@@ -92,10 +92,8 @@ def get_access_token(query_id):
     return response.json()['access_token']
 
 def get_username(query_id:str):
-    data = json.loads(unquote(query_id).split('&')[1].split('=')[1])
-    if 'username' in data:
-        return data['username']
-    return '<NOT SET>'
+    return json.loads(parse_qs(query_id)['user'][0]).get('username', '<NOT SET>')
+    
 def config(name, default):
     with open("config.json", 'r') as file:
         config = json.load(file)
