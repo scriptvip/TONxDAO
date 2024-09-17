@@ -1,4 +1,4 @@
-import requests, json
+import requests, json, os
 
 def get_user_dao(query_id):
     token = get_access_token(query_id)
@@ -109,3 +109,6 @@ def banner():
   ╚═════╝ ╚══════╝╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
 """
     print(f"\033[92m{banner}")
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
