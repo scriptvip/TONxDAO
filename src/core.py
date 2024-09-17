@@ -1,4 +1,5 @@
 import requests, json, os
+from urllib.parse import unquote
 
 def get_user_dao(query_id):
     token = get_access_token(query_id)
@@ -91,7 +92,7 @@ def get_access_token(query_id):
     return response.json()['access_token']
 
 def get_username(query_id:str):
-    return json.loads(query_id.split('&')[1].split('=')[1])['username']
+    return json.loads(unquote(query_id).split('&')[1].split('=')[1])['username']
 
 def config(name, default):
     with open("config.json", 'r') as file:
